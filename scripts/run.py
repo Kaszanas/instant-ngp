@@ -271,6 +271,9 @@ if __name__ == "__main__":
 				if i == 0:
 					write_image("out.png", image)
 
+				if ref_image.shape[2] == 3:
+					ref_image = np.append(ref_image, np.zeros((ref_image.shape[0], ref_image.shape[1], 1)), axis=2)
+
 				diffimg = np.absolute(image - ref_image)
 				diffimg[...,3:4] = 1.0
 				if i == 0:
